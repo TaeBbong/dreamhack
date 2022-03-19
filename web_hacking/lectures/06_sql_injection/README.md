@@ -85,3 +85,26 @@ SELECT * FROM user_table WHERE uid='admin' and ascii(substr(upw,2,1))=116-- ' an
 
 Blind SQL Injection은 여러번 시도해야 하기 때문에 스크립트로 작성
 
+## NoSQL
+
+비관계형 데이터베이스(키-값 쌍으로 데이터를 저장)
+DBMS 종류에 따라 다양한 구조, 문법이 있음
+
+### MongoDB
+
+Collection 정의 필요 없음 => 테이블과 동일한 개념
+JSON 형식으로 쿼리를 작성
+_id 필드가 Primary Key 역할을 수행
+
+```sql
+SELECT * FROM inventory WHERE status = "A" and qty < 30;
+db.inventory.find( { $and: [ { status: "A" }, { qty: { $lt: 30 } } ] } )
+```
+
+```bash
+$ mongo
+> db.user.insert({uid: 'admin', upw: 'secretpassword'})
+WriteResult({ "nInserted" : 1 })
+> db.user.find({uid: 'admin'})
+{ "_id" : ObjectId("5e71d395b050a2511caa827d"), "uid" : "admin", "upw" : "secretpassword" }
+```
