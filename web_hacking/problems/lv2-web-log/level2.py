@@ -1,0 +1,1 @@
+answer = '/var/lib/php/sessions/sess_ag4l8a5tbv8bkgqe9b9ull5732'
