@@ -73,7 +73,7 @@ check_get(url)
 url을 인자로 받아서
 ip = lookup(url)로 ip 주소를 딴 다음 ip 주소 유효성 확인하고
 res = requests.get(url)로 데이터 가져온 다음,
-ip가 공인 IP인지 확인하고 아니면 fail
+ip가 공인 IP인지 확인하고 아니면 fail => SSRF 방지(이거 안하면 127.0.0.1:3333/admin 주소 넣어서 클리어 가능)
 res.text 안에서 referer가 있는지 본 다음에,
 그 refer가 localhost이거나 127.0.0.1이면 fail
 이후 결과를 return
@@ -99,7 +99,7 @@ remote_addr을 127.0.0.1로 설정
 기본적으로 url에 문제 url을 넣으면 터지는 거 같음
 
 일단 결국 미션은 127.0.0.1:3333/admin으로 접속하게 만드는 것이다.
-근데 공인 IP 쪽을 우회해야 하므로 우회 방법을 찾아야 한다.
+근데 공인 IP 쪽을 우회해야 하므로 우회 방법을 찾아야 한다. => SSRF 방어를 우회하는 기법 중 리다이렉션, 단축 URL 등의 방법이 있음
 이 과정에서 몇가지 조사를 해보니
 
 http://google.com:80@127.0.0.1:3333/admin
