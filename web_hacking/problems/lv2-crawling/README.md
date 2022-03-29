@@ -113,3 +113,9 @@ https://han.gl/GcZDX
 이렇게 만드는 경우도 있었다.
 
 하면 할 수록 모르는 내용이 많다.. 배경지식이 많이 필요한 것 같다.
+
+(추가) 이런 방법도 있다더라..
+
+DNS Rebinding
+
+https://m.blog.naver.com/tkdldjs35/221307513668
