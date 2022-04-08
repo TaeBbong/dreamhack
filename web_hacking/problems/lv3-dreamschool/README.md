@@ -239,3 +239,9 @@ for counter in range(1, 600):
 res = s.get(URL + res.text.split('<a class="post-list-elem" href="')[1].split('"')[0])
 info(f"FLAG: " + res.text.split('<p class="content">')[1].split("</p>")[0])
 ```
+
+### 그외 삽질
+
+[https://domdom.tistory.com/entry/Research-Crack-Flask-Cookies-Secret-Key](https://domdom.tistory.com/entry/Research-Crack-Flask-Cookies-Secret-Key)
+
+이거 보면서 SECRET_KEY에 꽂혔다가 삽질 오지게 했다. 왜 ascii decoding이 안되냐....
