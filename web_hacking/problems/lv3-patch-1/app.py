@@ -40,7 +40,7 @@ def login():
   userid = request.form.get('userid', '')
   password = request.form.get('password', '')
   if userid and password:
-    ret = query_db(f"SELECT * FROM users where userid='{userid}' and password='{hashlib.sha256(password.encode()).hexdigest()}'" , one=True)
+    ret = query_db(f"SELECT * FROM users where userid=? and password=?", (userid, hashlib.sha256(password.encode()).hexdigest()), one=True)
     if ret:
       session['uid'] = ret[0]
       return jsonify(result="success", userid=ret[0])
@@ -83,7 +83,7 @@ def memoAdd():
 @app.route('/api/memo/<idx>', methods=['GET'])
 def memoView(idx):
   mode = request.args.get('mode', 'json')
-  ret = query_db("SELECT * FROM memo where idx=" + idx)[0]
+  ret = query_db("SELECT * FROM memo where idx=?", [idx,])[0]
   
   if ret:
     userid = ret['userid']
