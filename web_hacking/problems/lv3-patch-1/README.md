@@ -68,6 +68,20 @@ if mode == 'html':
 
 [https://sl1nki.page/blog/2021/01/24/ssti](https://sl1nki.page/blog/2021/01/24/ssti)
 
+이렇게 escape 기능을 쓸 수도 있다.
+
+```python
+from flask import Flask, request, render_template_string, g, session, jsonify, escape
+...
+if mode == 'html':
+      template = ''' Written by {{userid |e}}<h3>{{title |e}}</h3>
+      <pre>{{contents |e}}</pre>
+      '''
+      return render_template_string(template, title=escape(title), userid=escape(userid), contents=escape(contents))
+```
+
+[https://security.openstack.org/guidelines/dg_cross-site-scripting-xss.html](https://security.openstack.org/guidelines/dg_cross-site-scripting-xss.html)
+
 ### 3. SQL Injection
 
 ```python
