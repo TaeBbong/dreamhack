@@ -84,15 +84,23 @@ def memoAdd():
 def memoView(idx):
   mode = request.args.get('mode', 'json')
   ret = query_db("SELECT * FROM memo where idx=" + idx)[0]
+  
   if ret:
     userid = ret['userid']
     title = ret['title']
     contents = ret['contents']
+
+    context = {
+      'userid': userid,
+      'title': title,
+      'contents': contents
+    }
+    
     if mode == 'html':
-      template = ''' Written by {userid}<h3>{title}</h3>
-      <pre>{contents}</pre>
-      '''.format(title=title, userid=userid, contents=contents)
-      return render_template_string(template)
+      template = '''Written by {{userid}}<h3>{{title}}</h3>
+      <pre>{{contents}}</pre>
+      '''
+      return render_template_string(template, **context)
     else:
       return jsonify(result="success",
         userid=userid,
@@ -120,6 +128,6 @@ def memoUpdate(idx):
   return jsonify(result="error")
 
 if __name__ == "__main__":
-  os.environ['SECRET_KEY'] = 'Th1s_1s_V3ry_secret_key'
   os.environ['DATABASE'] = 'database.db'
+
   app.run(host='0.0.0.0', port=8080, threaded=True)
