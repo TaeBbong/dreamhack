@@ -66,6 +66,8 @@ if mode == 'html':
 
 이런 식으로 딕셔너리 형태로 variable을 render_template_string()의 인자로 전달하면 autoescape가 수행되면서 방어가 가능하다.
 
+[https://sl1nki.page/blog/2021/01/24/ssti](https://sl1nki.page/blog/2021/01/24/ssti)
+
 ### 3. SQL Injection
 
 ```python
@@ -84,6 +86,8 @@ ret = query_db('SELECT * FROM memo where idx=?', [idx,])[0]
 
 와 같이 ?를 활용해서 인자를 전달하면 이는 SQL Injection으로부터 안전해진다.
 왜인지는 아직 모름...
+
+[https://hyunalee.tistory.com/34](https://hyunalee.tistory.com/34)
 
 ### 4. IDOR(Insecure Direct Object Reference)
 
