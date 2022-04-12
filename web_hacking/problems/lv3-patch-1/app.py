@@ -118,6 +118,9 @@ def memoUpdate(idx):
   title = request.form.get('title')
   contents = request.form.get('contents')
 
+  if userid != ret['userid']:
+    return jsonify(result="no permission")
+
   if ret and title and contents:
     conn = get_db()
     cur = conn.cursor()
